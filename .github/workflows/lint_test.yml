@@ -16,6 +16,13 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+    - uses: ./.github/actions/prep
+      env:
+        VAULT_PASS: ${{ secrets.VAULT_PASS }}
+    - name: hide credentials from the output
+      run: |
+        echo "::add-mask::$POSTGRES_USER"
+        echo "::add-mask::$POSTGRES_PASSWORD"
     - name: build docker containers
       run: |
         docker-compose build
