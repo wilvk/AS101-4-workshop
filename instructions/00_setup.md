@@ -156,3 +156,7 @@ TALISMAN_DEBUG=true .git/hooks/pre-commit
 ```
 
 Which should output some talisman debug info.
+
+### Ansible
+
+TBD
