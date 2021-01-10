@@ -23,6 +23,7 @@ jobs:
       run: |
         echo "::add-mask::$POSTGRES_USER"
         echo "::add-mask::$POSTGRES_PASSWORD"
+        echo "::add-mask::$POSTGRES_DB"
     - name: build docker containers
       run: |
         docker-compose build
