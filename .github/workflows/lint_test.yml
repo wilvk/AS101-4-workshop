@@ -19,6 +19,11 @@ jobs:
     - uses: ./.github/actions/prep
       env:
         VAULT_PASS: ${{ secrets.VAULT_PASS }}
+    - name: hide credentials from the output
+      run: |
+        echo "::add-mask::$POSTGRES_USER"
+        echo "::add-mask::$POSTGRES_PASSWORD"
+        echo "::add-mask::$POSTGRES_DB"
     - name: build docker containers
       run: |
         docker-compose build
